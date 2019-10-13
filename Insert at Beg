@@ -1,0 +1,49 @@
+// Inserting Element at Nth node of Linked List
+
+#include<iostream>
+using namespace std ;
+
+struct node
+{
+  int data;
+  node* link;
+};
+node* head;
+
+void insert(int x);
+void print();
+
+void insert(int x)
+{
+  node* temp=new node ;
+  temp->data=x;
+  temp->link=head;
+  head=temp;
+}
+
+void print()
+{
+  node* temp=head;
+  while(temp!=NULL)
+  {
+    cout<<temp->data<<" ";
+    temp=temp->link;
+  }
+}
+
+int main()
+{
+  head=NULL ;
+  int n,x;
+  cout<<"\n\n How many numbers ?\n" ;
+  cin>>n ;
+  for(int i=0 ; i<n ; ++i)
+  {
+    cout<<"\n\n Enter no to be inserted at beginning : \n";
+    cin>>x;
+    insert(x);
+    print();
+  }
+
+  return 0;
+}
