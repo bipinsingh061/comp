@@ -1,0 +1,64 @@
+// Reverse Linked List using Recursion
+
+#include<iostream>
+using namespace std;
+
+
+
+struct node
+{
+  int data;
+  node* link;
+};
+
+void insert(int,node **head);
+void print(node* head);
+void revPrint(node* head);
+
+void insert(int n,node **head)
+{
+  node* temp=new node;
+  temp->data=n;
+  temp->link=*head;
+  *head=temp;
+}
+
+void print(node* head)
+{
+  if(head==NULL)
+  return ;
+  cout<<head->data<<" " ;
+  print(head->link);
+
+}
+
+void revPrint(node* head)
+{
+  if(head==NULL)
+  return ;
+  revPrint(head->link);
+  cout<<head->data<<" " ;
+}
+
+
+
+int main()
+{
+  node* head;
+  head=NULL ;
+  // Note :  Insert function inserts element at the beginning everytime called
+  insert(95,&head) ;
+  insert(88,&head) ;
+  insert(37,&head) ;
+  insert(45,&head) ;
+  insert(55,&head) ;
+  insert(105,&head) ;
+  insert(59,&head) ;
+  insert(58,&head) ;
+  // so List now :  58,59,105,55,45,37,88,95
+  print(head);
+  cout<<"\n\n";
+  revPrint(head);
+
+
+}
