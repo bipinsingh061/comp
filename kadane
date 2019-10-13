@@ -1,0 +1,28 @@
+//  Write an efficient program to find the sum of contiguous subarray within a one-dimensional array of numbers 
+//  which has the largest sum.
+
+#include<iostream>
+using namespace std;
+
+
+int main()
+{
+  int n;
+  cin>>n ;
+  int ar[n];
+  cout<<"\n\n";
+  for(int i=0 ; i<n ; ++i)
+  cin>>ar[i];
+
+  int cmax,gmax ;
+  cmax=gmax=ar[0];
+  for(int i=1 ; i<n ; ++i)
+  {
+    cmax=max(ar[i],cmax+ar[i]);
+    if(cmax>gmax)
+    gmax=cmax;
+  }
+  cout<<"\n\n"<<gmax ;
+
+  return 0;
+}
