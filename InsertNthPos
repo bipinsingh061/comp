@@ -1,0 +1,73 @@
+// Inseeting Element at Nth pos in Linked List
+
+#include<iostream>
+using namespace std;
+
+// Inserting a node at nth position
+
+struct node
+{
+  int data ;
+  node* link ;
+};
+
+node* head;
+
+
+void insert(int , int);
+void print();
+
+void insert(int x , int n)
+{
+  cout<<endl;
+  node* temp=new node;
+  temp->data=x;
+  if(n==1)
+  {
+    temp->link=head;
+    head=temp;
+    return ;
+  }
+  // if n!=1 we have to reach (n-1)th node,we do this by for loop till n-2 times because we are already at
+  // head node first node
+  node* temp2=new node;
+  temp2=head ;    // already at 1st node
+  for(int i=0 ; i<n-2 ; ++i)
+  {
+    temp2=temp2->link;
+  }
+  temp->link=temp2->link;
+  temp2->link=temp;
+
+}
+
+void print()
+{
+  node* temp;
+  temp=head;
+  while(temp!=NULL)
+  {
+    cout<<temp->data<<"  ";
+    temp=temp->link;
+  }
+}
+
+
+
+int main ()
+{
+  head=NULL ;
+
+  insert(5,1);  // 5
+    insert(7,1); // 7,5
+      insert(3,2); // 7,3,5
+        insert(1,1); // 1,7,3,5
+          insert(20,3); // 1,7,20,3,5
+            insert(18,1); // 18,1,7,20,3,5
+              insert(14,4); // 18,1,7,14,20,3,5
+
+              print();
+
+
+  return 0 ;
+}
